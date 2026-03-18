@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Mode</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Focus Mode</h1>
+    <a href="/" class="back-link">Back</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="panel">
+    <h2 id="focusTaskName"></h2>
+
+    <p class="label">First tiny step</p>
+    <p id="focusStep" class="focus-text"></p>
+
+    <p class="label">Materials</p>
+    <p id="focusMaterials" class="focus-text"></p>
+
+    <p class="label">Chunks</p>
+    <p id="focusChunks" class="focus-text"></p>
+  </section>
+
+  <section class="panel timer-panel">
+    <p class="label">Timer (minutes)</p>
+    <p id="timerDisplay">0</p>
+
+    <div class="timer-buttons">
+      <button id="startTimer" class="primary-btn">Start</button>
+      <button id="stopTimer" class="secondary-btn">Stop</button>
+      <button id="resetTimer" class="secondary-btn">Reset</button>
+    </div>
+
+    <p class="timer-note">The timer only counts minutes to reduce pressure.</p>
+  </section>
+
+  <section class="panel actions">
+    <button id="completeChunk" class="primary-btn">Mark chunk complete</button>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
