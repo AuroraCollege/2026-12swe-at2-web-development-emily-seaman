@@ -1,33 +1,8 @@
-/* ============================================================
-   STUDY PLANNER APP — FULL VERSION
-   Features:
-   - Add tasks
-   - Energy filtering
-   - Chunk progress tracking
-   - LocalStorage saving/loading
-   - Focus Mode data transfer
-   - Minutes-only timer
-   ============================================================ */
-
-/* ------------------------------
-   GLOBAL STATE
------------------------------- */
-
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-
-/* ------------------------------
-   SAVE & LOAD
------------------------------- */
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-
-
-/* ------------------------------
-   RENDER TASK LIST
------------------------------- */
 
 function renderTasks(filter = "all") {
   const list = document.getElementById("taskList");
@@ -73,11 +48,6 @@ function renderTasks(filter = "all") {
   });
 }
 
-
-/* ------------------------------
-   ADD TASK
------------------------------- */
-
 function addTask() {
   const name = document.getElementById("taskName").value.trim();
   const step = document.getElementById("taskStep").value.trim();
@@ -113,11 +83,6 @@ function clearForm() {
   document.getElementById("taskChunks").value = 1;
 }
 
-
-/* ------------------------------
-   ENERGY FILTER
------------------------------- */
-
 function setupFilters() {
   const chips = document.querySelectorAll(".chip");
   chips.forEach(chip => {
@@ -130,9 +95,6 @@ function setupFilters() {
 }
 
 
-/* ------------------------------
-   FOCUS MODE — LOAD TASK
------------------------------- */
 
 function openFocusMode(id) {
   localStorage.setItem("focusTaskId", id);
@@ -152,9 +114,6 @@ function loadFocusTask() {
 }
 
 
-/* ------------------------------
-   FOCUS MODE — CHUNK COMPLETION
------------------------------- */
 
 function completeChunk() {
   const id = parseInt(localStorage.getItem("focusTaskId"));
@@ -167,10 +126,6 @@ function completeChunk() {
   }
 }
 
-
-/* ------------------------------
-   TIMER (MINUTES ONLY)
------------------------------- */
 
 let timer = null;
 let minutes = 0;
@@ -199,10 +154,6 @@ function resetTimer() {
   updateTimerDisplay();
 }
 
-
-/* ------------------------------
-   PAGE INITIALISATION
------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.getElementById("addTaskBtn");
