@@ -8,7 +8,7 @@ function renderTasks(filter = "all") {
   const list = document.getElementById("taskList");
   const empty = document.getElementById("emptyState");
 
-  if (!list) return; // Not on index.html
+  if (!list) return;
 
   list.innerHTML = "";
 
@@ -56,7 +56,10 @@ function addTask() {
   const energy = document.getElementById("taskEnergy").value;
   const chunks = parseInt(document.getElementById("taskChunks").value);
 
-  if (!name || !step) return alert("Please enter a task name and first tiny step.");
+  if (!name || !step) {
+    alert("Please enter a task name and first tiny step.");
+    return;
+  }
 
   const newTask = {
     id: Date.now(),
@@ -85,6 +88,7 @@ function clearForm() {
 
 function setupFilters() {
   const chips = document.querySelectorAll(".chip");
+
   chips.forEach(chip => {
     chip.addEventListener("click", () => {
       chips.forEach(c => c.classList.remove("active"));
@@ -93,8 +97,6 @@ function setupFilters() {
     });
   });
 }
-
-
 
 function openFocusMode(id) {
   localStorage.setItem("focusTaskId", id);
@@ -113,8 +115,6 @@ function loadFocusTask() {
     `${task.completedChunks} / ${task.chunks}`;
 }
 
-
-
 function completeChunk() {
   const id = parseInt(localStorage.getItem("focusTaskId"));
   const task = tasks.find(t => t.id === id);
@@ -126,37 +126,45 @@ function completeChunk() {
   }
 }
 
-
-let timer = null;
-let minutes = 0;
-
-function updateTimerDisplay() {
-  document.getElementById("timerDisplay").textContent = minutes;
-}
-
-function startTimer() {
-  if (timer) return;
-
-  timer = setInterval(() => {
-    minutes++;
-    updateTimerDisplay();
-  }, 60000); // 1 minute
-}
-
-function stopTimer() {
-  clearInterval(timer);
-  timer = null;
-}
-
-function resetTimer() {
-  stopTimer();
-  minutes = 0;
-  updateTimerDisplay();
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.getElementById("addTaskBtn");
+  const timerDisplay = document.getElementById("timerDisplay");
+  const startBtn = document.getElementById("startTimer");
+  const stopBtn = document.getElementById("stopTimer");
+  const resetBtn = document.getElementById("resetTimer");
+
+  if (timerDisplay && startBtn && stopBtn && resetBtn) {
+    let timer = null;
+    let minutes = 0;
+
+    function updateDisplay() {
+      timerDisplay.textContent = minutes;
+    }
+
+    startBtn.addEventListener("click", () => {
+      if (timer === null) {
+        timer = setInterval(() => {
+          minutes++;
+          updateDisplay();
+        }, 60000);
+      }
+    });
+
+    stopBtn.addEventListener("click", () => {
+      clearInterval(timer);
+      timer = null;
+    });
+
+    resetBtn.addEventListener("click", () => {
+      clearInterval(timer);
+      timer = null;
+      minutes = 0;
+      updateDisplay();
+    });
+
+    updateDisplay();
+  }
+
+  const addBtn = document.getElementById("addTask");
   const completeBtn = document.getElementById("completeChunk");
 
   if (addBtn) {
@@ -167,11 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (completeBtn) {
     completeBtn.addEventListener("click", completeChunk);
-
-    document.getElementById("startTimer").addEventListener("click", startTimer);
-    document.getElementById("stopTimer").addEventListener("click", stopTimer);
-    document.getElementById("resetTimer").addEventListener("click", resetTimer);
-
     loadFocusTask();
   }
 });
