@@ -375,6 +375,22 @@ input::placeholder {
   100% { opacity: 0; transform: scale(1.2); }
 }
 
+.congrats-message {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.return-subtitle {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
 .sparkle {
   position: absolute;
   top: -8px;

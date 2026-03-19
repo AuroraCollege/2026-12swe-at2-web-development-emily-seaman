@@ -127,10 +127,27 @@ function completeChunk() {
   const id = parseInt(localStorage.getItem("focusTaskId"));
   const task = tasks.find(t => t.id === id);
 
+  if (!task) return;
+
   if (task.completedChunks < task.chunks) {
     task.completedChunks++;
     saveTasks();
     loadFocusTask();
+  }
+
+  if (task.completedChunks === task.chunks) {
+    const msg = document.getElementById("congratsMessage");
+    msg.style.display = "block";
+
+    setTimeout(() => {
+      msg.style.opacity = 1;
+    }, 10);
+
+    setTimeout(() => {
+      tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
+      window.location.href = "/";
+    }, 15000);
   }
 }
 
