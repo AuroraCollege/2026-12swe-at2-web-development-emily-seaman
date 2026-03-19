@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Planner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
@@ -12,14 +12,14 @@
 <header class="site-header">
   <div class="header-inner">
     <h1>Study Planner</h1>
-    <p class="subtitle">A calm, low‑demand way to study</p>
+    <p class="subtitle">A calm, low‑demand way to study.</p>
   </div>
 </header>
 
 <main>
 
   <section class="panel">
-    <h2 class="section-title">Energy filter</h2>
+    <h2 class="section-title">Energy Filter</h2>
     <div class="energy-filter">
       <button class="chip" data-energy="all">All</button>
       <button class="chip" data-energy="low">Low</button>
@@ -30,33 +30,33 @@
 
   <section class="panel">
     <h2 class="section-title">Tasks</h2>
-    <p class="panel-subtitle">Tap Focus to open a calm, single‑task view.</p>
+    <p class="panel-subtitle">Tap Focus to open single‑task view.</p>
     <div id="taskList" class="task-list"></div>
     <p id="emptyState" class="empty-state">No tasks yet.</p>
   </section>
 
   <section class="panel add-task">
-    <h2 class="section-title">Add task</h2>
-    <p class="panel-subtitle">Keep it small and specific.</p>
+    <h2 class="section-title">Add Task</h2>
+    <p class="panel-subtitle">Remember to keep it small and specific.</p>
 
     <div class="form-grid">
-      <label>Task name
+      <label>Task Name
         <input id="taskName" placeholder="e.g. English essay intro">
       </label>
 
-      <label>First tiny step
+      <label>First Tiny Step
         <input id="taskStep" placeholder="e.g. open document">
       </label>
 
-      <label>Materials
+      <label>Materials Required
         <input id="taskMaterials" placeholder="e.g. laptop, notes">
       </label>
 
-      <label>Estimated time (mins)
+      <label>Estimated Time (minutes)
         <input id="taskTime" type="number">
       </label>
 
-      <label>Energy level
+      <label>Energy Level
         <select id="taskEnergy">
           <option value="low">Low</option>
           <option value="medium">Medium</option>

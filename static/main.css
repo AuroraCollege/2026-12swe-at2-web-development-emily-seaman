@@ -31,6 +31,10 @@ body {
   background-attachment: fixed;
 }
 
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
 .site-header {
   background: rgba(0,0,0,0.2);
   backdrop-filter: blur(8px);
