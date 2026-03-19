@@ -36,19 +36,22 @@ body {
 }
 
 .site-header {
-  background: rgba(0,0,0,0.2);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   padding: 1.5rem 1rem;
-  border-bottom: 2px solid rgba(0,0,0,0.15);
+  margin: 1rem auto;
+  max-width: 380px;
 }
 
 .header-inner {
-  max-width: 900px;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
 }
 
 h1 {
@@ -120,6 +123,28 @@ main {
 .chip:focus-visible {
   outline: 2px solid var(--black);
   outline-offset: 2px;
+}
+
+.chip {
+  background: rgba(255,255,255,0.9);
+  border: 2px solid rgba(0,0,0,0.1);
+  color: #000;
+}
+
+.chip.active[data-energy="all"] {
+  background: var(--blue);
+}
+
+.chip.active[data-energy="low"] {
+  background: var(--green);
+}
+
+.chip.active[data-energy="medium"] {
+  background: var(--yellow);
+}
+
+.chip.active[data-energy="high"] {
+  background: var(--pink);
 }
 
 .task-list {
