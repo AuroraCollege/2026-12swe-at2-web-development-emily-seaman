@@ -111,8 +111,16 @@ function loadFocusTask() {
   document.getElementById("focusTaskName").textContent = task.name;
   document.getElementById("focusStep").textContent = task.step;
   document.getElementById("focusMaterials").textContent = task.materials;
-  document.getElementById("focusChunks").textContent =
-    `${task.completedChunks} / ${task.chunks}`;
+
+  const percent = (task.completedChunks / task.chunks) * 100;
+  document.getElementById("focusProgressFill").style.width = percent + "%";
+  
+  if (percent === 100) {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  document.querySelector(".focus-progress").appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 800);
+}
 }
 
 function completeChunk() {
@@ -127,6 +135,20 @@ function completeChunk() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const addBtn = document.getElementById("addTask");
+  const completeBtn = document.getElementById("completeChunk");
+
+  if (addBtn) {
+    addBtn.addEventListener("click", addTask);
+    setupFilters();
+    renderTasks();
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", completeChunk);
+    loadFocusTask();
+  }
+
   const timerDisplay = document.getElementById("timerDisplay");
   const startBtn = document.getElementById("startTimer");
   const stopBtn = document.getElementById("stopTimer");
@@ -162,19 +184,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateDisplay();
-  }
-
-  const addBtn = document.getElementById("addTask");
-  const completeBtn = document.getElementById("completeChunk");
-
-  if (addBtn) {
-    addBtn.addEventListener("click", addTask);
-    setupFilters();
-    renderTasks();
-  }
-
-  if (completeBtn) {
-    completeBtn.addEventListener("click", completeChunk);
-    loadFocusTask();
   }
 });
