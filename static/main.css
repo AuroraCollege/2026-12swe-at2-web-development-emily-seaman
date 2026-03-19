@@ -1,11 +1,11 @@
 :root {
-  --rose: #e2b2b0;
-  --sand: #e2b077;
-  --gold: #dfcf66;
-  --sage: #9dbb6a;
-  --eucalyptus: #859cb2;
-  --black: #000000;
+  --pink: #f3c8c6;
+  --orange: #f3d3b0;
+  --yellow: #f3e6a8;
+  --green: #c7dcb0;
+  --blue: #b7d4e8;
 
+  --black: #000000;
   --card-bg: #ffffff;
   --border: #dcdcdc;
 
@@ -20,20 +20,15 @@
 }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
   background: linear-gradient(
     180deg,
-    #e2b2b0 0%,
-    #e2b077 25%,
-    #dfcf66 50%,
-    #9dbb6a 75%,
-    #85b292 100%
+    #f3c8c6 0%,
+    #f3d3b0 20%,
+    #f3e6a8 45%,
+    #c7dcb0 70%,
+    #b7d4e8 100%
   );
   background-attachment: fixed;
-  color: var(--black);
-  line-height: 1.5;
 }
 
 .site-header {
@@ -163,9 +158,9 @@ main {
   font-weight: 600;
 }
 
-.energy-low { background: var(--sage); }
-.energy-medium { background: var(--gold); }
-.energy-high { background: var(--rose); }
+.energy-low { background: var(--green); }
+.energy-medium { background: var(--yellow); }
+.energy-high { background: var(--pink); }
 
 .small-text {
   margin-top: 0.5rem;
@@ -254,23 +249,19 @@ input::placeholder {
 }
 
 .primary-btn {
-  background: var(--sage);
+  background: var(--green);
 }
 
 .primary-btn:hover {
-  background: var(--eucalyptus);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
+  background: var(--blue);
 }
 
 .secondary-btn {
-  background: var(--eucalyptus);
+  background: var(--blue);
 }
 
 .secondary-btn:hover {
-  background: var(--sage);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
+  background: var(--green);
 }
 
 .back-link {
